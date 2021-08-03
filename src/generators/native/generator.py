@@ -108,9 +108,6 @@ if __name__ == '__main__':
                     'desc': class_desc
                 })
             elif line.startswith(CLASS_DESCRIPTION_START) and can_be_a_class:
-                if line.startswith('//@description Sets the phone number '):
-                    print('kek')
-
                 current_class_desc = line.split(CLASS_DESCRIPTION_START, 1)[1]
                 class_describing = True
 
