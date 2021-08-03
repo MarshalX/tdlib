@@ -1,0 +1,24 @@
+{% extends "base.template" %}
+
+{% block module -%}
+    m.def("ping", &ping);
+
+    py::register_exception_translator([](std::exception_ptr p) {
+        try {
+            if (p) std::rethrow_exception(p);
+        } catch (const std::exception &e) {
+            PyErr_SetString(PyExc_RuntimeError, e.what());
+        }
+    });
+
+    // --Base Classes--
+
+    py::class_<td::TlObject>(m, "TlObject");
+    py::class_<td_api::Object>(m, "Object");
+    py::class_<td_api::Function>(m, "Function");
+
+    // ---Abstract Classes---
+    {% include "abstract_classes.template" %}
+    // --Classes--
+    {% include "classes.template" %}
+{% endblock %}

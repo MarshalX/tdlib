@@ -1,0 +1,11 @@
+{% for class in classes %}
+    // {{ class.desc }}
+    py::class_<td_api::{{ class.name }}>(m, "{{ class.name }}")
+            .def(py::init<>()){% if not class.args %};{% endif %}
+    {% if class.args -%}
+        {% for arg in class.args %}
+            .def_readwrite("{{ arg.name }}", &td_api::{{ class.name }}::{{ arg.name }}_)
+        {%- endfor -%}
+    ;
+    {% endif %}
+{%- endfor -%}

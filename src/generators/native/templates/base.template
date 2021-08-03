@@ -1,0 +1,39 @@
+#include <iostream>
+#include <limits>
+#include <map>
+#include <memory>
+#include <sstream>
+
+#include <pybind11/pybind11.h>
+
+{# #include <td/telegram/Client.h> -#}
+#include <td/telegram/td_api.h>
+#include <td/tl/TlObject.h>
+
+
+template<typename T, typename... Args>
+std::unique_ptr<T> make_unique(Args&&... args) {
+    return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
+}
+
+namespace py = pybind11;
+namespace td_api = td::td_api;
+
+
+void ping() {
+{#    std::unique_ptr<td::ClientManager> client_manager_; -#}
+{#    std::int32_t client_id_{0}; -#}
+{# -#}
+{#    td::ClientManager::execute(td_api::make_object<td_api::setLogVerbosityLevel>(5)); -#}
+{#    client_manager_ = make_unique<td::ClientManager>(); -#}
+{#    client_id_ = client_manager_->create_client_id(); -#}
+{# -#}
+{#    client_manager_->send(client_id_, 1, std::move(td_api::make_object<td_api::getOption>("version"))); #}
+
+    py::print("pong");
+}
+
+PYBIND11_DECLARE_HOLDER_TYPE(Type, td_api::object_ptr<Type>)
+PYBIND11_MODULE(tdlib_native, m) {
+    {% block module %}{% endblock %}
+}

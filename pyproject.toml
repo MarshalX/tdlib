@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "tdlib"
+version = "0.0.1"
+description = "A cross-platform library for building Telegram clients with Python"
+authors = ["Il'ya (Marshal) <ilya@marshal.dev>"]
+license = "LGPLv3"
+
+[tool.poetry.dependencies]
+python = "~=3.6"
+
+[tool.poetry.dev-dependencies]
+Jinja2 = "^3.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

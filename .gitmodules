@@ -1,0 +1,7 @@
+[submodule "third_party/pybind11"]
+	path = third_party/pybind11
+	url = https://github.com/pybind/pybind11/
+	branch = v2.7
+[submodule "third_party/td"]
+	path = third_party/td
+	url = https://github.com/tdlib/td

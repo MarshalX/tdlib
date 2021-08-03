@@ -1,0 +1,4 @@
+{% for abstract_class in abstract_classes %}
+    // {{ abstract_class.desc }}
+    py::class_<td_api::{{ abstract_class.name }}>(m, "{{ abstract_class.name }}");
+{% endfor %}
