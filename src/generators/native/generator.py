@@ -114,5 +114,5 @@ if __name__ == '__main__':
             # TODO functions
 
     code = template.render(abstract_classes=abstract_classes, classes=classes)
-    with open('../../native/tdlib.cpp', 'w') as output:
+    with open('../../native/tdlib_native.cpp', 'w') as output:
         output.write(code)

@@ -303,6 +303,7 @@ PYBIND11_MODULE(tdlib_native, m) {
     // Describes a stream to which TDLib internal log is written
     py::class_<td_api::LogStream>(m, "LogStream");
 
+
     // --Classes--
     
     // An object of this type can be returned on every function call, in case of an error
